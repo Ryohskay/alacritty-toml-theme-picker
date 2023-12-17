@@ -30,7 +30,6 @@ fn main() -> Result<(), std::io::Error> {
             
             let updated_path_os_str = theme_dir.clone().into_os_string();
             let updated_path = updated_path_os_str.to_str().unwrap();
-            println!("{}", updated_path);
 
             let path_for_replace = toml::Value::try_from(updated_path)
                 .expect("Converting path into toml::Value failed!");
@@ -40,11 +39,11 @@ fn main() -> Result<(), std::io::Error> {
         }
     }
 
-    println!("{:#?}", updated_imports);
     // replace the import section of the toml
     let replacement_value = toml::Value::try_from(updated_imports).unwrap();
     config_all.insert("import".to_string(), replacement_value);
+
+    // write to the config file
     let data = config_all.to_string();
-    println!("{}", data);
     fs::write(config_file_name, data.as_bytes())
 }
