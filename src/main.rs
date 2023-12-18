@@ -1,7 +1,6 @@
 use std::fs;
 use toml::Table;
 use std::path::Path;
-use std::io::Write;
 
 fn main() -> Result<(), std::io::Error> {
     let selected_theme = "afterglow";
