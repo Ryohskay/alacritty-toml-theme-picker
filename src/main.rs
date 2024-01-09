@@ -18,7 +18,7 @@ fn main() -> Result<(), std::io::Error> {
     // initialise a vector to use as a replacement for the import section
     let mut updated_imports: Vec<toml::Value> = Vec::with_capacity(imports.len());
 
-    // iterate over the paths in the import section, find the theme load
+    // iterate over the paths in the import section, find the theme to load
     for f in imports {
         let fpath = f.as_str().unwrap();
         if fpath.contains("themes") {
